@@ -4,11 +4,14 @@ import map from "lodash/map";
 import values from "lodash/values";
 
 function rowsSelector(categories, emojisByCategory, modifier, search, term) {
-  const findEmojiVariant = emojis =>
+  // console.log(`createRowsSelector modifier: ${modifier}`);
+
+  const findEmojiVariant = emojis => 
     modifier && emojis[modifier] ? emojis[modifier] : emojis[0];
-  const searchTermRegExp = new RegExp(`^(?:.* +)*${escape(term)}`, "i");
+
+  const searchTermRegExp         = new RegExp(`^(?:.* +)*${escape(term)}`, "i");
   const keywordMatchesSearchTerm = keyword => searchTermRegExp.test(keyword);
-  const emojiMatchesSearchTerm = emoji =>
+  const emojiMatchesSearchTerm   = emoji =>
     emoji.keywords.concat(emoji.name).some(keywordMatchesSearchTerm);
 
   return map(categories, (category, id) => {
