@@ -29,10 +29,10 @@
     "dialog"
   ],
   "dependencies": {
-    "emojione": "^2.2.6",
+    "emojione": "^3.1.1",
     "escape-string-regexp": "^1.0.5",
     "lodash": "^4.15.0",
-    "react": ">=0.14.0",
+    "react": "^15.2.0",
     "react-addons-shallow-compare": ">=0.14.0",
     "react-virtualized": "^9.7.4",
     "store": "^2.0.4"

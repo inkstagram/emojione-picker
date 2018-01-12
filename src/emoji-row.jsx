@@ -20,7 +20,6 @@ export default class EmojiRow extends Component {
 
   render() {
     const { emojis, style } = this.props;
-
     return (
       <div className="emoji-row" style={style}>
         {emojis.map(emoji => (
@@ -28,7 +27,7 @@ export default class EmojiRow extends Component {
             {...emoji}
             ariaLabel={emoji.name}
             role="option"
-            key={emoji.unicode}
+            key={emoji.code_points.base}
             onSelect={this._handleEmojiSelect}
           />
         ))}
