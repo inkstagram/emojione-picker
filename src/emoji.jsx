@@ -36,12 +36,13 @@ export default class Emoji extends Component {
         this.props,
         "shortname",
         "aliases",
-        "aliases_ascii",
+        "ascii",
         "category",
         "name",
+        "order",
         "shortcode",
-        "unicode",
-        "unicode_alternates",
+        "code_points",
+        "unicode_version",
         "keywords"
       )
     );

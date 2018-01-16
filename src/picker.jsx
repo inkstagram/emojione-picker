@@ -34,6 +34,7 @@ export default class Picker extends Component {
 
   state = {
     modifier: store.get("emoji-modifier") || "0",
+    frequentlyUsed: store.get('emoji-frequently-used') || [],
     category: false,
     term: this.props.search !== true ? this.props.search : ""
   };
@@ -44,7 +45,11 @@ export default class Picker extends Component {
     each(this.props.emojione, (value, key) => {
       emojione[key] = value;
     });
-    this.setState({ emojis: createEmojisFromStrategy(strategy) });
+    this.setState({ emojis: {
+      ...createEmojisFromStrategy(strategy),
+      ...this.getFromFrequentlyUsed(strategy, this.state.frequentlyUsed)
+    }
+    });
   }
 
   componentDidMount() {
@@ -55,6 +60,44 @@ export default class Picker extends Component {
     if (this.props.search !== nextProps.search) {
       this.setState({ term: this.props.search });
     }
+  }
+
+  getFromFrequentlyUsed (strategy, frequentlyUsed) {
+    const emojis = {}
+    emojis['frequentlyUsed'] = {}
+
+    let x = 0;
+    frequentlyUsed.reverse().forEach(frequentlyUsed => {
+      emojis['frequentlyUsed'][x] = [frequentlyUsed]
+      x++
+    })
+    return emojis
+  }
+
+  addToFrequentlyUsed (data) {
+    const strategyName = data.shortname.replace(/:/g, '')
+    const currentFrequentlyUsed = store.get('emoji-frequently-used') || []
+    const newFrequentlyUsed = [
+      ...currentFrequentlyUsed.filter(f => f.strategyName !== strategyName),
+      data
+    ];
+    if (newFrequentlyUsed.length > 9) {
+      newFrequentlyUsed.shift();
+    }
+
+    store.set('emoji-frequently-used', newFrequentlyUsed)
+    this.setState({
+      frequentlyUsed: newFrequentlyUsed,
+      emojis: {
+        ...this.state.emojis,
+        ...this.getFromFrequentlyUsed(strategyName, newFrequentlyUsed)
+      }
+    })
+  }
+
+  onChange = (data) => {
+    this.addToFrequentlyUsed(data)
+    this.props.onChange(data)
   }
 
   setFocus = ev => {
@@ -99,7 +142,7 @@ export default class Picker extends Component {
           rows={rows}
           modifier={this.state.modifier}
           onActiveCategoryChange={this._onActiveCategoryChange}
-          onChange={this.props.onChange}
+          onChange={this.onChange}
           onModifierChange={this._onModifierChange}
         />
       </div>
