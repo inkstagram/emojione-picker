@@ -68,7 +68,7 @@ export default class Picker extends Component {
 
     let x = 0;
     frequentlyUsed.reverse().forEach(frequentlyUsed => {
-      emojis['frequentlyUsed'][x] = [frequentlyUsed]
+      emojis['frequentlyUsed'][frequentlyUsed.code_points.base] = [frequentlyUsed]
       x++
     })
     return emojis
@@ -81,6 +81,7 @@ export default class Picker extends Component {
       ...currentFrequentlyUsed.filter(f => f.strategyName !== strategyName),
       data
     ];
+
     if (newFrequentlyUsed.length > 9) {
       newFrequentlyUsed.shift();
     }
