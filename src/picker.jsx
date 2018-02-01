@@ -78,7 +78,7 @@ export default class Picker extends Component {
     const strategyName = data.shortname.replace(/:/g, '')
     const currentFrequentlyUsed = store.get('emoji-frequently-used') || []
     const newFrequentlyUsed = [
-      ...currentFrequentlyUsed.filter(f => f.strategyName !== strategyName),
+      ...currentFrequentlyUsed.filter(f => f.shortname !== data.shortname),
       data
     ];
 
