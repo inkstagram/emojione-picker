@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import pick from "lodash/pick";
-import emojione from "emojione";
+import emojione from "emoji-toolkit";
 
 export default class Emoji extends Component {
   static propTypes = {
