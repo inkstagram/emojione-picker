@@ -29,7 +29,7 @@
     "dialog"
   ],
   "dependencies": {
-    "emojione": "^3.1.1",
+    "emoji-toolkit": "^5.5.0",
     "escape-string-regexp": "^1.0.5",
     "lodash": "^4.15.0",
     "react": "^15.2.0",

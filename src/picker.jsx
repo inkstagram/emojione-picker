@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import emojione from "emojione";
+import emojione from "emoji-toolkit";
 import store from "store";
 import each from "lodash/each";
 import map from "lodash/map";
 import omit from "lodash/omit";
-import strategy from "emojione/emoji.json";
+import strategy from "emoji-toolkit/emoji.json";
 import Emoji from "./emoji";
 import Categories from "./categories";
 import createRowsSelector from "./utils/createRowsSelector";
