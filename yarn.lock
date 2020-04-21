@@ -1677,7 +1677,7 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-emoji-toolkit@^3.1.1:
+emoji-toolkit@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-5.5.0.tgz#824c919f29873f9132b9bcce984426ec306b5c0f"
   integrity sha512-R0gjAg8blE+58BCDKVvtm2lNcy9zV4JnGmcGAnvvCbLPhYd3eAxnbwxmfE1zIHyyvsnJMh+ycZJu6A7OdSqKNw==
